@@ -37,9 +37,19 @@ Todo
 
 Scopes zijn parameters die je meegeeft tijdens de authenticatie, normaliter met OAuth 2.0. Na authenticatie bepalen de scopes die zijn meegegeven welke resources (data) aan de client (applicatie) mag worden gegeven. De API die de resources ontsluit kan en zal dus worden beperkt in de data die wordt prijsgegeven aan de client en dit wordt bepaald door de user tijdens authenticatie en niet tijdens de aanroep van de API. 
 
+Een API resource kent doorgaans uiteenlopende beveiligingsniveaus. Een applicatie moet onderscheid kunnen maken tussen reguliere en vertrouwelijke data en het hiervoor dienen verschillende scopes gebruikt te worden.  
+
+De volgende richtlijnen kunnen van toepassing zijn voor het definieren van scopes: 
+1.	Gebruik verschillende scopes voor lees-, schrijf- en verwijderrechten op resources.
+2.	Maak gebruik van meerdere scopes voor resources met verschillend beveiligingsniveau. 
+3.	Gebruik verschillende scopes voor diverse functionaliteiten 
+4.	Houdt inzichtelijk welk toegangsniveau wordt verleend, door scopes niet te veel te detailleren.
+
+Lees- versus schrijftoegang is een goed startpunt om te beginnen bij het definiëren van scopes voor een service. Applicaties die gegevens moeten kunnen wijzigen namens een gebruiker, hebben een ander toegangsniveau nodig dan applicaties die alleen de openbare gegevens hoeven te lezen. Daarbij is het zinvol om een scope aan te maken voor het verwijderen van gegevens, zodat alleen die toepassingen die daartoe gerechtigd zijn, expliciet deze scope aanvragen. 
+
 Je ziet dit typisch terug bij het inloggen op een applicatie met een Apple, Google of Github account. In de dialoog die bij het inloggen wordt getoond staat dan dat alleen de naam en het email adres worden verstrekt aan de client applicatie. Zie bijvoorbeeld [developer.apple.com](https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi/3230955-scope) of [docs.github.com](https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps) . 
 
-Opvallend in de voorbeelden is dat je bij Apple alleen de 2 scopes "<u>name</u>" & "<u>email</u>" mee kan geven en dat de API van Github heel veel opties heeft zoals bijvoorbeeld "<u>read:user</u>" , "<u>user:email</u>" & "<u>user:follow</u>". Ook zie je gelijk dat iedere API andere keuzes maakt in de naamgeving van de scopes. Er is dus variatie in wat scopes precies betekenen voor een API.
+Opvallend in de voorbeelden is dat je bij Apple alleen de 2 scopes "<u>name</u>" & "<u>email</u>" mee kan geven en dat de API van Github heel veel opties heeft zoals bijvoorbeeld "<u>read:user</u>" , "<u>user:email</u>" & "<u>user:follow</u>". Ook zie je gelijk dat iedere API andere keuzes maakt in de naamgeving van de scopes. Er is dus variatie in wat scopes precies betekenen voor een API. Ook de structuur van scopes is redelijk vrij om in te richten, maar vanuit beheeroptiek wel van belang hiervoor een goede standaard neer te leggen.
 
 ### Claims
 
